@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model InstagramApiExperiment.Models.OAuthToken
+
+<div>
+    @Html.TextBoxFor(m => m.access_token, new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.user.full_name, new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.user.id, new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.user.username, new { @class = "form-control" })
+    <div>
+        <img src="@Model.user.profile_picture" alt="Picture of user" />
+    </div>
+    <form method="POST" action="/home/bytag">
+        @Html.Label("Access Token")
+        @Html.TextBoxFor(m => m.access_token)
+        <input type="submit" value="Submit" />
+    </form>
+</div>

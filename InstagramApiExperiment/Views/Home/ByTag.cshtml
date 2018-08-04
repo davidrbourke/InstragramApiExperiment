@@ -1,0 +1,28 @@
+﻿@model InstagramApiExperiment.Models.ByTag
+
+<div>
+    <form method="POST" action="/home/bytag">
+        @Html.EditorFor(x => x.access_token)
+        @Html.EditorFor(x => x.TagName)
+        <input type="submit" value="Submit" />
+    </form>
+
+    <div class="card shadow-sm">
+        @{if (Model.Root != null && Model.Root.data != null)
+            {
+                foreach (var item in Model.Root.data)
+                {
+                <img class="card-img-top" src="@item.images.standard_resolution.url"/>
+                <div class="card-body">
+                    <p class="card-text">
+                        @foreach (var tag in item.tags)
+                        {
+                            <span>@tag</span>
+                        }
+                    </p>
+                </div>
+                }
+             }
+         }
+    </div>
+</div>
